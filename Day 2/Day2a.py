@@ -3,6 +3,21 @@ del data[-1]
 parsed = []
 
 
+def prepData():
+    for i in data:
+        temp = i.split(' ')
+
+        nums = temp[0].split('-')
+        first = nums[0]
+        second = nums[1]
+
+        letter = temp[1][0]
+        password = temp[2]
+
+        obj = [first, second, letter, password]
+        parsed.append(obj)
+
+
 def occurances(str, letter):
     total = 0
     while str.find(letter) != -1:
@@ -31,29 +46,12 @@ def isValid2(obj):
     return False
 
 
-def prepData():
-    for i in data:
-        temp = i.split(' ')
-
-        nums = temp[0].split('-')
-        first = nums[0]
-        second = nums[1]
-
-        letter = temp[1][0]
-        password = temp[2]
-
-        obj = [first, second, letter, password]
-        parsed.append(obj)
-
-
 def partOne():
-    valid = [isValid1(i) for i in parsed]
-    return sum(valid)
+    return sum([isValid1(i) for i in parsed])
 
 
 def partTwo():
-    valid = [isValid2(i) for i in parsed]
-    return sum(valid)
+    return sum([isValid2(i) for i in parsed])
 
 
 prepData()
