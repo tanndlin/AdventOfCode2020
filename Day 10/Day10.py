@@ -31,5 +31,19 @@ def partOne(arr):
     return ones * threes
 
 
+def partTwo(arr):
+    ways = [1]
+    for i in range(1, len(arr)):
+        temp = ways[i-1]
+        j = i - 2
+        while j >= 0 and arr[i] - arr[j] <= 3:
+            temp += ways[j]
+            j -= 1
+
+        ways.append(temp)
+    return ways[-1]
+
+
 insertionSort(data)
 print(partOne(data))
+print(partTwo(data))
